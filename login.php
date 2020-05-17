@@ -5,25 +5,21 @@
 		echo "<script type='text/javascript'>alert('$hiba');</script>";
 		unset($_SESSION['hiba']);
 	}
-    /*require_once 'config.php';*/
+    
     require_once 'fbconfig.php';
-    $redirectUrl = "https://fcmdev.hu/szakdoga/fb-callback.php";
+    $redirectUrl = "https://fcmdev.hu/fb-callback.php";
     $permission = ['email'];
     $fbloginUrl = $helper->getLoginUrl($redirectUrl, $permission);
     if(isset($_SESSION["username"])){
-        header('Location: fcm.php');
+		echo "van session";
+		sleep(5);
+        header('Location: szimulacio.php');
+        exit();
+    }						
+    else if(isset($_SESSION['accesstoken'])){
+        header('Location: szimulacio.php');
         exit();
     }
-    /*else  if(isset($_SESSION['access_token'])){
-        header('Location: menu.php');
-        exit();
-    }
-    else if(isset ($_SESSION['accesstoken'])){
-        header('Location: menu.php');
-        exit();
-    }*/
-
-    /*$loginURL = $gClient->createAuthUrl();*/
 ?>
 
 <!DOCTYPE html>
@@ -34,9 +30,23 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="css_files/stilus.css">
+        <link rel="stylesheet" type="text/css" href="css/stilus.css">
+		<link rel="stylesheet" type="text/css" href="css/kezdolap.css">
     </head>
     <body>
+		<div id="Container">
+			<header>
+				<div>
+					<a id="title" href="kezdolap.php" style="text-decoration:none">FCMDev.hu</a>
+				</div>
+				<nav>
+					<a class="nav-link" id="kezdolap" href="kezdolap.php">Kezdőlap</a>
+					<a class="nav-link" id="fcm" href="fcm.php">FCM bemutatása</a>
+					<a class="nav-link" id="linkek" href="linkek.php">Linkek</a>
+					<a class="nav-link" id="login" href="login.php" style="text-decoration: underline;">Bejelentkezés</a>
+				</nav>
+			</header>
+		</div>
         <div class="container-login100" style="background-image: url('images/79017058_434476557428791_8724845592146083840_n.png');">
             <div class="wrap-login100 row" style="margin: 0px">
                 <form class="login100-form col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center" action="pdo_process.php" method="POST">
@@ -71,11 +81,6 @@
 						Facebook
 					</button>
 				</div>
-				<!--<div class="login100-form col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 d-flex justify-content-center">
-					<button class="btn-google" onclick="window.location ="*/>
-						Google
-					</button>
-				</div>-->
 			</div>
         </div>
         <script>
