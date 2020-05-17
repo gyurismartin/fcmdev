@@ -79,7 +79,7 @@
 					<option value=0.75>0.75</option>
 					<option value=1>1</option>
 				</select>
-				<input id="removebtn" type="image" onclick="remove()" src="red-x.png" style="display: none"></input>
+				<input id="removebtn" type="image" onclick="remove()" src="images/red-x.png" style="display: none"></input>
 				<div id="btndiv" style="width: 100%;text-align: center;display:none">
 					<button id="tbtn" onclick="tobb()">Érték a kezdeti állapotokhoz</button>
 					<button id="randombtn" onclick="random()">Véletlenszerű értékek generálása</button>
@@ -94,7 +94,7 @@
 					<button id="adatok" type="submit">Adatok megadása fájlból</button>
 					<p style="padding-top: 20px">A fájl megfelelő kitöltése a következő:</p>
 					<div class="imageContainer">
-						<img id="myImg" src="FCM_sample.jpg" alt="FCM példa" style="width:100%;max-width:100px">
+						<img id="myImg" src="images/FCM_sample.jpg" alt="FCM példa" style="width:100%;max-width:100px">
 
 						<!-- The Modal -->
 						<div id="myModal" class="modal">
@@ -103,7 +103,7 @@
 							<span class="close">&times;</span>
 
 							<!-- Modal Content (The Image) -->
-							<img class="modal-content" src="FCM_sample.jpg" id="img01" alt="FCM példa">
+							<img class="modal-content" src="images/FCM_sample.jpg" id="img01" alt="FCM példa">
 
 							<!-- Modal Caption (Image Text) -->
 							<div id="caption"></div>
@@ -1201,7 +1201,7 @@
 		var kep = document.createElement("input");
 		kep.setAttribute("id",lefutas);
 		kep.setAttribute("type","image");
-		kep.setAttribute("src","icons8-download-graph-report-30.png");
+		kep.setAttribute("src","images/icons8-download-graph-report-30.png");
 		kep.setAttribute("onclick","kepletoltes3(this.id)");
 		//kep.textContent = "Képletöltés";
 		kep.style.margin = "10px 0px 0px";
@@ -1217,7 +1217,7 @@
 			var kep = document.createElement("input");
 			kep.setAttribute("id","kep1");
 			kep.setAttribute("type","image");
-			kep.setAttribute("src","icons8-download-graph-report-30.png");
+			kep.setAttribute("src","images/icons8-download-graph-report-30.png");
 			kep.setAttribute("onclick","kepletoltes()");
 			//kep.textContent = "Képletöltés";
 			kep.style.margin = "10px 0px 0px";
@@ -1234,7 +1234,7 @@
 			var kep = document.createElement("input");
 			kep.setAttribute("id","kep2");
 			kep.setAttribute("type","image");
-			kep.setAttribute("src","icons8-download-graph-report-30.png");
+			kep.setAttribute("src","images/icons8-download-graph-report-30.png");
 			kep.setAttribute("onclick","kepletoltes2()");
 			//kep.textContent = "Képletöltés";
 			kep.style.margin = "10px 0px 0px";

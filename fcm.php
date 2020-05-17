@@ -40,7 +40,7 @@
 				<p><p>
 			</div>
 			<div class="grid_6" style="text-align:center;">
-				<image src="axelrod.png"></image>
+				<image src="images/axelrod.png"></image>
 			</div>
 			<div class="grid_12">
 				<ul class="grid_5">Az FCM modellek kellő számú t időpillanat után háromféle eredményt mutathatnak:

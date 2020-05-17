@@ -41,7 +41,7 @@
 				</ul>
 			</div>
 			<div id="image" class="grid_6 animated fadeInRight col-md-12 col-12" style="animation-duration: 2s;animation-name: fadeInRight;">
-				<img src="A-simple-Fuzzy-Cognitive-Map.png" style="border: solid 2px #cccccc"></img>
+				<img src="images/A-simple-Fuzzy-Cognitive-Map.png" style="border: solid 2px #cccccc"></img>
 			</div>
 			<div id="function-list" class="grid_12 col-md-12 col-12">
 				<div id="functions" class="grid_4 animated fadeInUp col-md-12" style="animation-duration: 2s;animation-name: fadeInUp;">
