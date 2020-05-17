@@ -1,0 +1,486 @@
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+  font-family: Montserrat-Medium;
+  src: url('../fonts/montserrat/Montserrat-Medium.ttf'); 
+}
+
+@font-face {
+  font-family: Montserrat-SemiBold;
+  src: url('../fonts/montserrat/Montserrat-SemiBold.ttf'); 
+}
+body {
+    padding: 0px;
+    margin:0px;
+}
+.container-login100{
+	position: relative;
+	top: 80px;
+}
+#Container {
+	height: 80px;
+	position: fixed;
+	width: 100%;
+	background-color: #1c1c1c;
+	font-family: Montserrat-Medium;
+	font-size: 16px;
+	z-index: 9;
+	color: #FFF;
+}
+#funkcio-gombok {
+	width: 1200px;
+	top: 80px;
+	height: 30px;
+	position: fixed;
+	background-color: #808080;
+	font-family: Montserrat-Medium;
+	font-size: 14px;
+	z-index: 9;
+	color: #FFF;
+}
+#funkcio-gombok header{
+	width: 100%;
+	font-family: Montserrat-SemiBold;
+	margin-left: 0px;
+	color: #FFF;
+	height: 30px;
+}
+#funkcio-gombok header nav{
+	margin: 0px 200px 0px 200px;
+	text-transform: uppercase;
+	float: left;
+	text-decoration: none;
+	color: #FFF;
+}
+#funkcio-gombok header nav a.funkcio-a{
+	text-decoration: none;
+	display: block;
+    float: left;
+    border-left: solid 1px #FFF;
+	text-align: center;
+    color: #fff;
+    padding: 0 0 0 0px;
+    margin: 5px 0 5px 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 16px;
+    white-space: nowrap;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+header {
+	font-family: Montserrat-SemiBold;
+	margin-left: 210px;
+	color: #FFF;
+	height: 80px;
+}
+header #title{
+	font-weight: bold;
+    font-size: 2.25em;
+    letter-spacing: -.1em;
+    margin-top: 20px;
+    display: inline;
+    float: left;
+    margin-left: 0px;
+	color: #FFF;
+	text-decoration: none;
+}
+header nav{
+	margin: 22px 10px 5px 0px;
+	text-transform: uppercase;
+	float: right;
+	margin-bottom: 40px;
+	text-decoration: none;
+	color: #FFF;
+}
+header nav a.nav-link {
+	display: block;
+    float: left;
+    border-right: solid 1px #FFF;
+	text-align: center;
+    color: #fff;
+    padding: 0 0 0 0px;
+    margin: 22px 0 5px 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 16px;
+    white-space: nowrap;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+header nav a {
+    text-decoration: none;
+    color: #FFF;
+}
+#Page {
+	background-image: url('../szakdoga/images/screen.jpg');
+	top: 80px;
+	font-family: Montserrat-Medium;
+	position: relative;
+	box-sizing: border-box;
+	min-height: 857px;
+}
+#Page h1{
+	margin-top: 0px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+#Page p#bemutatkozo{
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+}
+#Page p#szoveg{
+	font-size: 16px;
+	font-weight: bold;
+}
+/*#Page div#content{
+	background-image: url('../szakdoga/images/screen.jpg');
+	width: 50%;
+	float: left;
+	display: inline;
+	height: 294px;
+	margin: 0px;
+}*/
+#Page div#image{
+	/*background-image: url('../szakdoga/images/screen.jpg');
+	width: 50%;
+	float: right;
+	display: inline;*/
+	text-align: center;
+	/*margin: 0px;*/
+}
+#Page div#function-list{
+	align-items: center;
+}
+#Page div#functions{
+	margin: 10px 5px 0px 5px;
+	text-align: center;
+	border: solid 1px #1c1c1c;
+	border-radius: 20px;
+	min-height: 163px;
+}
+#Page div#function-image{
+	margin: 0px;
+	width: 33%;
+	display: inline;
+	text-align: center;
+}
+#Page div#function-description{
+	width: 33%;
+	display: inline;
+	text-align: center;
+}
+table{
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.content{
+	display: none;
+	position: relative;
+	top: 30px;
+}
+.active{
+	display: inline;
+	position: relative;
+}
+header nav > a#kezdolap { width: 150px; }
+header nav > a#fcm { width: 200px; }
+header nav > a#linkek { width: 150px; }
+header nav > a#login { width: 200px; }
+header nav > a#logoff { width: 200px; }
+
+header nav > a#ujszim { width: 200px; }
+header nav > a#fajl { width: 200px; }
+header nav > a#mtr { width: 200px; }
+header nav > a#szim { width: 200px; border-right: solid 1px #FFF}
+
+#irodalom a{
+	color: black;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	text-decoration: none;
+	text-align: justify;
+	display: block;
+}
+/* Style The Dropdown Button */
+.dropbtn {
+  background-color: #808080;
+  border-left: solid 1px #FFF;
+  border-right: solid 1px #FFF;
+  color: white;
+  /*padding: 16px;*/
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: none;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  margin:auto;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropbtn1 {
+  background-color: #1c1c1c;
+  border-left: solid 1px #FFF;
+  border-right: solid 1px #FFF;
+  color: white;
+  /*padding: 16px;*/
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown1 {
+  position: relative;
+  display: inline;
+  float: right;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown1-content {
+  display: none;
+  position: absolute;
+  margin:auto;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+/* Links inside the dropdown */
+.dropdown1-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown1-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown1:hover .dropdown1-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+/*.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}*/
+@media (max-width: 992px) {
+	header{
+		margin-left: 0px;
+		text-align: center;
+	}
+	header div{
+		height: 60px;
+		margin-top: 20px;
+	}
+	header #title{
+		margin: 0px;
+		float: none;
+	}
+	nav{
+		display: none;
+	}
+	#Page{
+		width: 100%;
+	}
+	#function-list{
+		width: 100%;
+	}
+	#functions{
+		width: 100%;
+	}
+	.grid_12{
+		
+	}
+	.col-lg-12{
+    max-width: 100%;
+    font-size: 16px;
+	}
+	.col-lg-6{
+		
+	}
+}
+@media (max-width: 576px) {
+	header{
+		margin-left: 0px;
+		text-align: center;
+	}
+	header div#titlediv{
+		height: 60px;
+		margin-top: 20px;
+		width: 80%;
+		display: inline-block;
+	}
+	header div#buttondiv{
+		height: 60px;
+		margin-top: 20px;
+		width: 20%;
+		float: right;
+		display: inline-block;
+	}
+	header #title{
+		margin: 0px;
+		float: none;
+	}
+	#Page{
+		font-size: 16px;
+		width: 100%;
+	}
+	#Page h1{
+		width: 100%;
+	}
+	#Page p{
+		width: 100%;
+	}
+	#szoveg{
+		width: 100%;
+		text-align: center;
+	}
+	#content{
+		width: 100%;
+	}
+	#image{
+		width: 100%;
+	}
+	#function-list{
+		width: 100%;
+	}
+	#Page div#functions{
+		width: 99%;
+		margin: 10px 0px 0px 0px;
+	}
+	#Page div p{
+		width: 95%;
+		margin: auto;
+	}
+	#funkcio-nav{
+		display:none;
+	}
+	#funkcio-gombok{
+		width: 100%;
+	}
+	.container-login100{
+		bottom: 0px;
+		position: relative;
+		width: 100%;
+	}
+	.dropdown{
+		display:block;
+		height: 30px;
+		margin: 0px;
+	}
+	.dropbtn{
+		margin-top: 3px;
+	}
+	.dropdown-content{
+		width: 200px;
+		position: relative;
+		height: 225px;
+		margin-top: 3px;
+	}
+	.dropdown-content a{
+		float: none;
+		margin: auto;
+	}
+	.dropdown1{
+		display:block;
+		height: 30px;
+		margin: 0px;
+	}
+	.dropbtn1{
+		margin-top: 3px;
+	}
+	.dropdown1content{
+		width: 200px;
+		position: relative;
+		height: 225px;
+		margin-top: 3px;
+	}
+	.dropdown1-content a{
+		float: none;
+		margin: auto;
+	}
+	.container_12 .grid_12{
+		width: 100%;
+		float: none;
+		margin: 0px;
+		display: block;
+	}
+	.container_12 .grid_10{
+		width: 90%;
+		float: none;
+		margin: 0px;
+		display: block;
+	}
+	.row .col-12{
+		width: 100%;
+		font-size: 16px;
+	}
+	.container_12 .grid_6{
+		width: 100%;
+		float: none;
+		margin: auto;
+		display: block;
+	}
+	.container_12 .grid_5{
+		width: 90%;
+		float: none;
+		margin: 0px;
+		display: block;
+		margin-bottom: 10px;
+	}
+	.container_12 .grid_4{
+		float: none;
+		margin: 0px;
+		display: block;
+	}
+	iframe{
+		width: 100%;
+		height: 100%;
+	}
+}
