@@ -355,10 +355,12 @@
                 var ha = document.getElementById("num1");
                 ha.setAttribute("readonly","readonly");
                 
+				var ertek = 0;
 				for(var j=0;j<5;j++){
 					window.segedtabla[j] = new Array(number);
 					for(i=0;i<number;i++){
-						if(j===0){
+						window.segedtabla[j][i] = ertek;
+						/*if(j===0){
 							window.segedtabla[j][i] = 0;
 						}
 						if(j===1){
@@ -372,8 +374,9 @@
 						}
 						if(j===4){
 							window.segedtabla[j][i] = 1;
-						}
+						}*/
 					}
+					ertek += 0.25;
 				}
                 //body reference 
                 var body = document.getElementById("container-login100");
@@ -1075,9 +1078,6 @@
 						}
 						stabil = stabil + 1;
 						window.break = j;
-						/*for(var m=0;m<number;m++){
-							window.fixpont[lefutas-1][m] = window.diagram[j-1][m];
-						}*/
 						break;
 					}
                 }
