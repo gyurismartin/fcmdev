@@ -11,8 +11,6 @@
     $permission = ['email'];
     $fbloginUrl = $helper->getLoginUrl($redirectUrl, $permission);
     if(isset($_SESSION["username"])){
-		echo "van session";
-		sleep(5);
         header('Location: szimulacio.php');
         exit();
     }						
@@ -60,11 +58,9 @@
                         <input class="input100" type="text" id="user" name="user" >
                         <span class="focus-input100"></span>
                     </div>
-                  
                         <span class="txt2">
                             Jelszó:
                         </span>
-                   
                     <div class="wrap-input100 validate-input d-flex justify-content-center">
                         <input class="input100" type="password" id="pass" name="pass" >
                         <span class="focus-input100"></span>
