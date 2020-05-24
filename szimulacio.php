@@ -51,8 +51,8 @@
 						<a id="ujszim" href="szimulacio.php">Új szimuláció</a>
 						<a id="fajl" href="#fajldiv">Fájl feltöltése</a>
 						<a id="mtr" href="#mtrdiv">Mátrix</a>
-						<a id="allapot" href="#allapotdiv">Kezdeti állapotok</a>
 						<a id="szim" href="#szimdiv">Eredmények</a>
+						<a id="megosztas" href="#megosztasdiv">Megosztás</a>
 					  </div>
 					</div>
 					<nav id="funkcio-nav">
@@ -60,6 +60,7 @@
 						<a class="funkcio-a" id="fajl" href="#fajldiv">Fájl feltöltése</a>
 						<a class="funkcio-a" id="mtr" href="#mtrdiv">Mátrix</a>
 						<a class="funkcio-a" id="szim" href="#szimdiv">Eredmények</a>
+						<a class="funkcio-a" id="megosztas" href="#megosztasdiv">Megosztás</a>
 					</nav>
 				</header>
 			</div>
@@ -114,12 +115,60 @@
 			<div id="szimdiv" class="content row">
 				<div id="btndiv2" style="width: 100%;text-align: center;"></div>
 			</div>
+			<div id="megosztasdiv" class="content row">
+				<form id="mailform" class="login100-form col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
+					<span class="txt1">
+						E-mail cím:
+					</span>
+					<div class="wrap-input100 validate-input d-flex justify-content-center">
+						<input class="input100" type="email" id="email" name="email" style="width:400px;text-align:center">
+						<span class="focus-input100"></span>
+					</div>
+					<span class="txt2">
+						Tárgy:
+					</span>
+					<div class="wrap-input100 validate-input d-flex justify-content-center">
+						<input class="input100" id="subject" name="subject" style="width:400px;text-align:center">
+						<span class="focus-input100"></span>
+					</div>
+					<span class="txt2">
+						Üzenet:
+					</span>
+					<div class="wrap-input100 validate-input d-flex justify-content-center">
+						<textarea class="input100" id="message" name="message" rows="10" cols="60"></textarea>
+						<span class="focus-input100"></span>
+					</div>
+					<div style="margin-top:10px;fontSize: 20px">
+						<label style="width: 100%">Eredmények küldése
+							<input type="checkbox" id="eredmenykuldes" name="eredmenykuldes" checked="checked" style="height: 20px;width: 20px;margin-left: 10px;position: absolute"></input>
+						</label>
+						<label style="width: 100%">Kiindulási adatok küldése
+							<input type="checkbox" id="kiindulasikuldes" name="kiindulasikuldes" style="height: 20px;width: 20px;margin-left: 10px;position: absolute"></input>
+						</label>
+					</div>
+					<div class="container-signin d-flex justify-content-center" style="margin-bottom: 10px;margin-top: 10px">
+						<button class="signin" name="signin" id="btn">Küldés</button>
+					</div>
+				</form>
+			</div>
 		</div>
 		<script>
+			var myForm = document.getElementById("mailform");
+					
+					myForm.addEventListener("submit", (e) => {
+						e.preventDefault();
+						
+						var xmlhttp = new XMLHttpRequest();
+						xmlhttp.open("POST","mail.php", true);
+						xmlhttp.onload = function () {
+							alert(xmlhttp.responseText);
+						}
+						xmlhttp.send(new FormData(myForm));
+					});
 			$(function() {
 			  $('.container-login100 > div > header > div > div > a').on('click', function() {
 				var e = (this).id;
-				var divs = ["fajldiv","mtrdiv","szimdiv"];
+				var divs = ["fajldiv","mtrdiv","szimdiv","megosztasdiv"];
 				jQuery.each(divs, function (i, val){
 					if($("#" + val).hasClass("active") && $("#" + val).id != e + "div"){
 						$("#" + val).removeClass("active");
@@ -131,7 +180,7 @@
 			$(function() {
 			  $('.container-login100 > div > header > nav > a').on('click', function() {
 				var e = (this).id;
-				var divs = ["fajldiv","mtrdiv","szimdiv"];
+				var divs = ["fajldiv","mtrdiv","szimdiv","megosztasdiv"];
 				jQuery.each(divs, function (i, val){
 					if($("#" + val).hasClass("active") && $("#" + val).id != e + "div"){
 						$("#" + val).removeClass("active");
@@ -332,10 +381,6 @@
 			}
 			function tableCreate() {
                 //number of rows and columns
-				document.getElementById("selecttext").style.display = "block";
-				document.getElementById("mySelect").style.display = "inline";
-				document.getElementById("removebtn").style.display = "inline";
-				document.getElementById("btndiv").style.display = "block";
 				var number = 0;
 				if (window.adat === 1) {
 					var session = <?php echo json_encode($lines) ?>;
@@ -354,27 +399,11 @@
                 
                 var ha = document.getElementById("num1");
                 ha.setAttribute("readonly","readonly");
-                
-				var ertek = 0;
+                var ertek = 0;
 				for(var j=0;j<5;j++){
 					window.segedtabla[j] = new Array(number);
 					for(i=0;i<number;i++){
 						window.segedtabla[j][i] = ertek;
-						/*if(j===0){
-							window.segedtabla[j][i] = 0;
-						}
-						if(j===1){
-							window.segedtabla[j][i] = 0.25;
-						}
-						if(j===2){
-							window.segedtabla[j][i] = 0.5;
-						}
-						if(j===3){
-							window.segedtabla[j][i] = 0.75;
-						}
-						if(j===4){
-							window.segedtabla[j][i] = 1;
-						}*/
 					}
 					ertek += 0.25;
 				}
@@ -480,10 +509,7 @@
                 // append the <tbody> inside the <table>
                 tbl1.appendChild(tblBody);
                 // put <table> in the <body>
-                /*form.appendChild(tbl1);*/
-				/*fodiv.appendChild(form);*/
-
-                /*tbl1.style.margin = "0px 0px 0px";*/
+                
                 tbl1.style.border = "1px solid black";
                 tbl1.style.borderCollapse = "collapse";
 				
@@ -548,169 +574,17 @@
 				var upload = document.getElementById("upload");
 				upload.style.display = "none";
 				
-				/*var uj = document.getElementById("uj");
-				uj.style.display = "initial";*/
-				
-				/*var div = document.createElement("div");
-				div.setAttribute("id","randomdiv");
-				div.style.width = "100%";*/
-				
 				var szamit = document.createElement("button");
 				szamit.setAttribute("id","szamit");
 				szamit.setAttribute("type","submit");
 				szamit.setAttribute("form","mtrform");
 				szamit.textContent = "Szimuláció";
 				szamit.style.margin = "10px 0px 0px";
-				
-				/*var kep = document.createElement("button");
-				kep.setAttribute("id","kep");
-				kep.setAttribute("onclick","kepletoltes()");
-				kep.textContent = "Képletöltés";
-				kep.style.margin = "10px 0px 0px";*/
-				
-				/*var maxszimtext = document.createElement("p");
-				maxszimtext.setAttribute("id","maxszimtext");
-				maxszimtext.style.width = "100%";
-				maxszimtext.style.textAlign = "left";
-				maxszimtext.innerHTML = "Adja meg a maximálisan megadni kívánt kezdeti állapotok számát!";
-				
-				var maxszim = document.createElement("input");
-				maxszim.setAttribute("id","maxszim");
-				maxszim.setAttribute("type","number");
-				maxszim.setAttribute("step","1");
-				maxszim.setAttribute("width","50px");
-				maxszim.style.float = "initial";
-                maxszim.style.border = "1px solid black";
-                maxszim.style.margin = "10px 5px 0px";
-				
-				var maxszimulacio = document.createElement("button");
-				maxszimulacio.setAttribute("id","maxszimulacio");
-				maxszimulacio.setAttribute("onclick","maxszimulal()");
-				maxszimulacio.style.float = "inherit";
-				maxszimulacio.textContent = "Maximális szám megadása";
-				maxszimulacio.style.margin = "10px 0px 0px 0px";*/
-
-				/*window.tbtn = document.createElement("button");
-				tbtn.setAttribute("id","tbtn");
-				tbtn.setAttribute("onclick","tobb()");
-				tbtn.style.float = "left";
-				tbtn.textContent = "Érték a kezdeti állapotokhoz";
-				tbtn.style.margin = "10px 5px 0px 0px";
-				
-				window.randombtn = document.createElement("button");
-				randombtn.setAttribute("id","randombtn");
-				randombtn.setAttribute("onclick","random()");
-				randombtn.style.float = "left";
-				randombtn.textContent = "Véletlenszerű kezdeti értékek generálása";
-				randombtn.style.margin = "10px 5px 0px 0px";
-				
-				window.tomegesbtn = document.createElement("button");
-				tomegesbtn.setAttribute("id","tomegesbtn");
-				tomegesbtn.setAttribute("onclick","tomeges()");
-				tomegesbtn.style.float = "left";
-				tomegesbtn.textContent = "Tömeges kezdeti állapot bevitel";
-				tomegesbtn.style.margin = "10px 5px 0px 0px";*/
-				
-				/*div.appendChild(szamit);*/
-				document.getElementById("mtrdiv").appendChild(szamit);
-				//document.getElementById("btndiv2").appendChild(kep);
-				
-				/*var div2 = document.createElement("div");
-				div2.setAttribute("id","div2");
-				div2.style.width = "100%";*/
-				/*fodiv.appendChild(div2);*/
-				/*text.appendChild(div);*/
-				/*fodiv.appendChild(maxszimtext);
-				maxszimtext.appendChild(maxszim);
-				maxszimtext.appendChild(maxszimulacio);*/
-				
-				/*var selecttext = document.createElement("p");
-				selecttext.setAttribute("id","selecttext");
-				selecttext.style.width = "100%";
-				selecttext.style.textAlign = "left";
-				selecttext.innerHTML = "A szimulálni kívánt kezdeti állapotok:";*/
-				
-				/*maxszimtext.appendChild(selecttext);*/
-				//fodiv.appendChild(selecttext);
-				
-				/*var removebtn = document.createElement("input");
-				removebtn.setAttribute("id","removebtn");
-				removebtn.setAttribute("type","image");
-				removebtn.setAttribute("src","red-x.png");
-				removebtn.setAttribute("onclick","remove();");
-				removebtn.setAttribute("width","23");
-				removebtn.setAttribute("heigth","23");*/
-				/*removebtn.setAttribute("disabled","disabled");*/
-				//removebtn.style.float = "left";
-				//removebtn.textContent = "Kezdeti állapot törlése";
-				//removebtn.style.margin = "10px 5px 0px";
-				
-				/*var alapok = document.createElement("button");
-				alapok.setAttribute("id","alapok");
-				alapok.setAttribute("onclick","bead()");
-				/*alapok.setAttribute("disabled","disabled");*/
-				//alapok.style.float = "right";
-				/*alapok.textContent = "Kezdeti állapot beadása";
-				alapok.style.margin = "10px 5px 0px";*/
-				
-				/*var kerdes = document.createElement("p");
-				kerdes.setAttribute("id","kerdes");
-				kerdes.style.textAlign = "left";
-				kerdes.innerHTML = "Szeretne saját kezdeti állapotokat hozzáadni?"
-				
-				var igenbtn = document.createElement("button");
-				igenbtn.setAttribute("id","igen");
-				igenbtn.setAttribute("onclick","igen()");
-				igenbtn.textContent = "Igen";
-				igenbtn.style.margin = "10px 5px 0px";
-				
-				var nembtn = document.createElement("button");
-				nembtn.setAttribute("id","nem");
-				nembtn.setAttribute("onclick","nem()");
-				nembtn.textContent = "Nem";
-				nembtn.style.margin = "10px 5px 0px";
-				
-				fodiv.appendChild(kerdes);
-				kerdes.appendChild(igenbtn);
-				kerdes.appendChild(nembtn);*/ 
-				
-				/*var mentesform = document.createElement("form");
-				mentesform.setAttribute("action","letolt.php");
-				mentesform.setAttribute("method","post");
-				mentesform.setAttribute("enctype","multipart/form-data");
-				
-				var mentesbtn = document.createElement("button");
-				mentesbtn.setAttribute("id","mentesbtn");
-				mentesbtn.setAttribute("onclick","mentesfunction()");
-				mentesbtn.textContent = "Alapadatok letöltése";
-				mentesbtn.style.margin = "10px 5px 0px";*/
-				
-				/*var mentesinput = document.createElement("input");
-				mentesinput.setAttribute("id","mentesinput");*/
-				
-				/*var letoltform = document.createElement("form");
-				letoltform.setAttribute("action","letoltes.php");
-				letoltform.setAttribute("method","post");
-				letoltform.setAttribute("enctype","multipart/form-data");
-				
-				var letoltbtn = document.createElement("button");
-				letoltbtn.setAttribute("id","letoltes");
-				letoltbtn.setAttribute("onclick","eredmenymentes()");
-				letoltbtn.textContent = "Az eredmények letöltése";
-				letoltbtn.style.margin = "10px 5px 0px";*/
-				
-				/*var letoltinput = document.createElement("input");
-				letoltinput.setAttribute("id","letoltinput");
-				letoltinput.setAttribute("type","hidden");
-				letoltinput.setAttribute("name","letolt");
-				/*letoltinput.setAttribute("value","test.csv");*/
-				
-				/*letoltform.appendChild(letoltinput);*/
-				/*mentesform.appendChild(mentesbtn);
-				letoltform.appendChild(letoltbtn);*/
-				/*fodiv.appendChild(mentesform);
-				fodiv.appendChild(letoltform);*/
-				
+				document.getElementById("selecttext").style.display = "block";
+				document.getElementById("mySelect").style.display = "inline";
+				document.getElementById("removebtn").style.display = "inline";
+				document.getElementById("btndiv").style.display = "block";
+				document.getElementById("mtrdiv").appendChild(szamit);				
             }
                 else{
 				   if(Number.isInteger(number) === false){
@@ -1021,7 +895,7 @@
 							window.diagram[time+1][i-1] = 1;
                         }
                         for(l=0;l<number;l++){
-						eremat[l][1] = eremat[l][0]
+							eremat[l][1] = eremat[l][0];
 						}
                         if(i === number){
                             break;
@@ -1136,7 +1010,7 @@
 			window.eredmenyek = window.diagram;
 			window.eredmenyek.splice(window.eredmenyek.length-1, 1);
 			window.osszes.splice(window.osszes.length, 0, window.eredmenyek);
-			
+			console.log(window.eremat);
 			eredmeny(lefutas);
 			szamlalo = szamlalo + 1;
 			}
