@@ -155,16 +155,16 @@
 		<script>
 			var myForm = document.getElementById("mailform");
 					
-					myForm.addEventListener("submit", (e) => {
-						e.preventDefault();
+			myForm.addEventListener("submit", (e) => {
+				e.preventDefault();
 						
-						var xmlhttp = new XMLHttpRequest();
-						xmlhttp.open("POST","mail.php", true);
-						xmlhttp.onload = function () {
-							alert(xmlhttp.responseText);
-						}
-						xmlhttp.send(new FormData(myForm));
-					});
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.open("POST","mail.php", true);
+				xmlhttp.onload = function () {
+					alert(xmlhttp.responseText);
+				}
+				xmlhttp.send(new FormData(myForm));
+			});
 			$(function() {
 			  $('.container-login100 > div > header > div > div > a').on('click', function() {
 				var e = (this).id;
