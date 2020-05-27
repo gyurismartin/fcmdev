@@ -1,5 +1,7 @@
 function szimulal(number, lambda, iteration){
+	//kapcsolati mátrix megadása
 	matrix  = [[-0.5,1],[0.25,0.5]];
+	//kezdeti állapotvektor megadása
 	init = [0.5,0.5];
 	eredmenyek = new Array(iteration);
 	for(var j=0;j<iteration;j++){
@@ -9,6 +11,7 @@ function szimulal(number, lambda, iteration){
 	var summ = 0;
 	var summary = 0;
 	
+	//az első időpillanat kiszámítása
 	for(var i=0;i<number;i++){
 		summ = 0;
 		for(var j=0; j<number; j++){
@@ -20,6 +23,7 @@ function szimulal(number, lambda, iteration){
 		summary = summary.toFixed(2);
 		eredmenyek[0][i] = summary;
 	}
+	//további időpillanatok
 	for(k=1;k<iteration;k++){
 		summary = 0;
 		for(var i=0;i<number;i++){
@@ -34,6 +38,7 @@ function szimulal(number, lambda, iteration){
 			eredmenyek[k][i] = summary;
 		}	
 	}
+	//kiválasztott időpillanatban az állapotvektort kell, hogy visszaadja
 	return eredmenyek[4];
 }
 
@@ -44,7 +49,7 @@ describe("Az elso allapotvektor szimulalasa", () => {
 		selected[0] = selected[0].toFixed(2);
 		selected[1] = selected[1].toFixed(2);
 		
-        //törlés metódus
+        //szimuláció metódus(mátrix nagysága, lambda, iterációk szám értékekkel)
         const result = szimulal(2,5,10);
 
         //tesztelés
