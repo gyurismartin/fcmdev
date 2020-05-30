@@ -239,8 +239,9 @@
 			var darabseged = 0;
 			window.eredmenyek = [];
 			window.osszes = [];
+			window.fixponttomb = [];
 			const c = [];
-			const fixpontok = [];
+			window.fixpontok = [];
 			const fixertekek = [];
 			
 			
@@ -871,7 +872,7 @@
 						window.fixpont[j][i] = i;
 					}*/
 				/*}*/
-				window.fixponttomb = new Array(2);
+				//window.fixponttomb = [];
 				var akt = 0;
 				var summ = 0;
 				var summary = 0;
@@ -941,15 +942,19 @@
 					}
 					if(cut===number){
 						window.van = 1;
-						for(var n=0;n<2;n++){
-							fixponttomb[n] = new Array(number);
-						}
+						fixponttomb[0] = new Array(number);
+						/*for(var n=0;n<2;n++){*/
+						fixponttomb[lefutas] = new Array(number);
+						//}
 						for(var n=0;n<number;n++){
 							fixponttomb[0][n] = "C"+(n+1);
 						}
-						for(var n=0;n<number;n++){
-							fixponttomb[1][n] = window.diagram[j-1][n];
-						}
+						fixponttomb[szamlalo] = window.diagram[j-1];
+						/*for(var n=0;n<number;n++){
+							if(window.diagram[j-1][n] != fixponttomb[0][n]){
+								fixponttomb[lefutas][n] = window.diagram[j-1][n];
+							}
+						}*/
 						stabil = stabil + 1;
 						window.break = j;
 						break;
@@ -1010,7 +1015,13 @@
 			window.eredmenyek = window.diagram;
 			window.eredmenyek.splice(window.eredmenyek.length-1, 1);
 			window.osszes.splice(window.osszes.length, 0, window.eredmenyek);
-			console.log(window.eremat);
+			
+			for(var j=2; j<lefutas; j++){
+				if(fixponttomb[j] != null && fixponttomb[j] === fixponttomb[0]){
+					delete fixponttomb[j];
+				}
+			}
+			console.log(window.fixponttomb);
 			eredmeny(lefutas);
 			szamlalo = szamlalo + 1;
 			}
@@ -1097,65 +1108,44 @@
 			kep.style.margin = "10px 0px 0px";
 			text.appendChild(kep);
 		}
-		if(document.getElementById("newChart2") === null){
-			var canvas3 = document.createElement("canvas");
-			canvas3.setAttribute("id","newChart2");
-			diveredmeny.appendChild(canvas3);
-			var text = document.createElement("p");
-			text.setAttribute("id","fixtext");
-			text.innerHTML = "Töltse le a fixpontok diagramot innen:";
-			diveredmeny.appendChild(text);
-			var kep = document.createElement("input");
-			kep.setAttribute("id","kep2");
-			kep.setAttribute("type","image");
-			kep.setAttribute("src","images/icons8-download-graph-report-30.png");
-			kep.setAttribute("onclick","kepletoltes2()");
-			//kep.textContent = "Képletöltés";
-			kep.style.margin = "10px 0px 0px";
-			text.appendChild(kep);
+		fixpontok[lefutas-1] = new Array(number);
+		if(window.cut === number && c[0] == null){
+			for(var i=0;i<number;i++){
+				c.push(window.fixponttomb[0][i]);
+			}
+			for(var i=0;i<number;i++){
+				if(window.fixponttomb[lefutas][i] != 'undefined'){
+					fixpontok[lefutas-1][i] = window.fixponttomb[lefutas][i];
+				}
+			}
 		}
+		
+		var canvas3 = document.createElement("canvas");
+		canvas3.setAttribute("id","newChart"+lefutas);
+		diveredmeny.appendChild(canvas3);
+		var text = document.createElement("p");
+		text.setAttribute("id","fixtext"+lefutas);
+		text.innerHTML = "Töltse le a fixpontok diagramot innen:";
+		diveredmeny.appendChild(text);
+		var kep = document.createElement("input");
+		kep.setAttribute("id","kep2"+lefutas);
+		kep.setAttribute("type","image");
+		kep.setAttribute("src","images/icons8-download-graph-report-30.png");
+		kep.setAttribute("onclick","kepletoltes2()");
+		//kep.textContent = "Képletöltés";
+		kep.style.margin = "10px 0px 0px";
+		text.appendChild(kep);
+		window.newChart2 = document.getElementById('newChart'+lefutas).getContext('2d');
+		
 		let myChart = document.getElementById('myChart'+lefutas).getContext('2d');
 		let newChart = document.getElementById('newChart').getContext('2d');
-		let newChart2 = document.getElementById('newChart2').getContext('2d');
+		//let newChart2 = document.getElementById('newChart'+lefutas).getContext('2d');
 		var t = document.getElementById("timeinput").value;
 		t = parseFloat(t);
 		// Global Options
 		const xlabels = [];
 		const ylabels = [];
 		
-		if(window.cut === number && c[0] == null){
-			for(var i=0;i<number;i++){
-				c.push(window.fixponttomb[0][i]);
-			}
-			for(var i=0;i<number;i++){
-				fixpontok.push(window.fixponttomb[1][i]);
-			}
-		}
-		
-		/*for(var i=0;i<number;){
-			if(fixpontok[0]==null){
-				fixpontok.push(window.fixpont[0][0]);
-				fixertekek[0] = 1;
-				i++;
-			}
-			else{
-				for(var j=0;j<number;j++){
-					if(fixpontok[j]==window.fixpont[lefutas-1][i]){
-						fixertekek[j]=fixertekek[j]+1;
-						i++;
-					}
-					else {
-						if(fixpontok[j]==null){
-							fixpontok.push(window.fixpont[lefutas-1][i]);
-							fixertekek[j] = 1;
-							i++;
-						}
-					}
-				}
-			}
-		}*/
-		/*console.log(fixpontok);
-		console.log(fixertekek);*/
 		for(var i = 0;i<t+1;i++){
 			xlabels.push(window.diagram[i][0]);
 		}
@@ -1237,7 +1227,7 @@
 					backgroundColor: 'red',
 					borderColor: 'red',
 					pointRadius: 10,
-					data: fixpontok
+					data: fixpontok[lefutas-1]
 				}]
 			},
 			options:{
@@ -1349,11 +1339,11 @@
 					  fontStyle: 'bold'
 				  },
 				  ticks:{
-							fontStyle: 'bold'
-						},
+						fontStyle: 'bold'
+					},
 				  gridLines: {
-							color: 'black',
-							lineWidth: 2
+						color: 'black',
+						lineWidth: 2
 						}
 			}],
 			  yAxes: [{
@@ -1364,11 +1354,11 @@
 					  fontStyle: 'bold'
 				  },
 				  ticks:{
-							fontStyle: 'bold'
+						fontStyle: 'bold'
 						},
 				  gridLines: {
-							color: 'black',
-							lineWidth: 2
+						color: 'black',
+						lineWidth: 2
 						}
 			}]
 			}
@@ -1401,14 +1391,8 @@
 		if(lefutas!==index){
 			window.myLine.destroy();
 		}
-		if(stabil!==0){
-			window.myLine = new Chart(newChart2, fixChart);
-			if(lefutas!==index){
-				window.myLine.destroy();
-			}
-		}
-		/*diveredmeny.style.width = "50%";
-		details.style.width = "50%";*/
+		
+		window.myLine = new Chart(window.newChart2, fixChart);
 	}
 		</script>
 	</body>

@@ -6,8 +6,16 @@ function szimulal(){
 		}
 		else{
 			createtimetable(lefutas+1);
+			/*if(fix.length == 0){
+				document.getElementById("diveredmeny").removeChild(document.getElementById("newChart"+1));
+				document.getElementById("diveredmeny").removeChild(document.getElementById("fixtext"+1));
+			}*/
+			
 		}
 	}
+	/*for(var i=1;i<window.init.length+1;i++){
+		eredmeny(i);
+	}*/
 	if(window.van != 1){
 		document.getElementById("fixtext").remove();
 		document.getElementById("newChart2").remove();
@@ -29,7 +37,7 @@ function szimulal(){
 	var mentesbtn = document.createElement("input");
 	mentesbtn.setAttribute("id","mentesbtn");
 	mentesbtn.setAttribute("type","image");
-	mentesbtn.setAttribute("src","icons8-export-csv-30.png");
+	mentesbtn.setAttribute("src","images/icons8-export-csv-30.png");
 	mentesbtn.style.margin = "10px 5px 0px";
 	
 	var letoltform = document.createElement("form");
@@ -41,7 +49,7 @@ function szimulal(){
 	var letoltbtn = document.createElement("input");
 	letoltbtn.setAttribute("id","letoltes");
 	letoltbtn.setAttribute("type","image");
-	letoltbtn.setAttribute("src","icons8-export-csv-30.png");
+	letoltbtn.setAttribute("src","images/icons8-export-csv-30.png");
 	letoltbtn.style.margin = "10px 5px 0px";
 	
 	p.appendChild(mentesbtn);
@@ -56,6 +64,13 @@ function szimulal(){
 	document.getElementById("randombtn").disabled = true;
 	document.getElementById("tbtn").disabled = true;
 	document.getElementById("tomegesbtn").disabled = true;
+	
+	for(var i=1;i<lefutas+1;i++){
+		if(fixpontok[i-1][0] == null){
+			document.getElementById("diveredmeny").removeChild(document.getElementById("newChart"+i));
+			document.getElementById("diveredmeny").removeChild(document.getElementById("fixtext"+i));
+		}
+	}
 	
 	$(function() {
 		$('#szimdiv').addClass('active');
