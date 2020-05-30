@@ -6,16 +6,8 @@ function szimulal(){
 		}
 		else{
 			createtimetable(lefutas+1);
-			/*if(fix.length == 0){
-				document.getElementById("diveredmeny").removeChild(document.getElementById("newChart"+1));
-				document.getElementById("diveredmeny").removeChild(document.getElementById("fixtext"+1));
-			}*/
-			
 		}
 	}
-	/*for(var i=1;i<window.init.length+1;i++){
-		eredmeny(i);
-	}*/
 	if(window.van != 1){
 		document.getElementById("fixtext").remove();
 		document.getElementById("newChart2").remove();

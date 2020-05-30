@@ -21,7 +21,6 @@
 		<script type="text/javascript" src="tobb.js"></script>
 		<script type="text/javascript" src="szimulal.js"></script>
 		<script type="text/javascript" src="random.js"></script>
-		<!--<style>body {background-image: url('images/screen.jpg');}</style>-->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="css/fcm.css">
 		<link rel="stylesheet" type="text/css" href="css/960.css">
@@ -244,10 +243,6 @@
 			window.fixpontok = [];
 			const fixertekek = [];
 			
-			
-			function sleep(ms) {
-				return new Promise(resolve => setTimeout(resolve, ms));
-			}
 			function kepletoltes(){
 				var myCanvas = document.getElementById("newChart");
 				
@@ -278,29 +273,6 @@
 				a.click();
 				document.body.removeChild(a);
 			}
-			function igen(){
-				var fodiv = document.getElementById("fodiv");
-				var body1 = document.getElementById("container-login100");
-
-                //fodiv.appendChild(window.tbl);
-				fodiv.appendChild(window.randombtn);
-				fodiv.appendChild(window.tbtn);
-				fodiv.appendChild(window.tomegesbtn);
-				window.formdiv.appendChild(window.form);
-				body1.appendChild(window.formdiv);
-				
-				document.getElementById("igen").disabled = true;
-				document.getElementById("nem").disabled = true;
-			}
-			function nem(){
-				var body1 = document.getElementById("container-login100");
-				
-				window.formdiv.appendChild(window.form);
-				body1.appendChild(window.formdiv);
-				
-				document.getElementById("igen").disabled = true;
-				document.getElementById("nem").disabled = true;
-			}
 			function eredmenymentes(){
 				for(var i=0;i<window.osszes.length;i++){
 					window.osszes[i].splice(0,0,[(i+1) + ". szimulacio"]);
@@ -308,13 +280,6 @@
 					
 					xmlhttp = new XMLHttpRequest();
 					xmlhttp.open("POST","ment.php", true);
-					xmlhttp.onreadystatechange=function(){
-						if (xmlhttp.readyState == 4){
-							if(xmlhttp.status == 200){
-								//alert (xmlhttp.responseText);
-							}
-						}
-					};
 					xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 					xmlhttp.send("eredmenyek=" + eredmenytomb);
 				}
@@ -338,38 +303,17 @@
 				var kapcsolatimatrix = JSON.stringify(window.matrix);
 				
 				xmlhttp = new XMLHttpRequest();
-				xmlhttp.open("POST","try2.php", true);
-				xmlhttp.onreadystatechange=function(){
-					if (xmlhttp.readyState == 4){
-						if(xmlhttp.status == 200){
-							//alert (xmlhttp.responseText);
-						}
-					}
-				};
+				xmlhttp.open("POST","ment_adatok.php", true);
 				xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xmlhttp.send("alapinfo=" + alapinfo);
 				
 				xmlhttp = new XMLHttpRequest();
-				xmlhttp.open("POST","try2.php", true);
-				xmlhttp.onreadystatechange=function(){
-					if (xmlhttp.readyState == 4){
-						if(xmlhttp.status == 200){
-							//alert (xmlhttp.responseText);
-						}
-					}
-				};
+				xmlhttp.open("POST","ment_adatok.php", true);
 				xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xmlhttp.send("kapcsolatimatrix=" + kapcsolatimatrix);
 				
 				xmlhttp = new XMLHttpRequest();
-				xmlhttp.open("POST","try2.php", true);
-				xmlhttp.onreadystatechange=function(){
-					if (xmlhttp.readyState == 4){
-						if(xmlhttp.status == 200){
-							//alert (xmlhttp.responseText);
-						}
-					}
-				};
+				xmlhttp.open("POST","ment_adatok.php", true);
 				xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xmlhttp.send("mentve=" + mentve);
 			}
@@ -420,7 +364,6 @@
                 fodiv.style.width = "100%";
 				window.form = document.createElement("form");
 				form.setAttribute("id","form");
-				/*form.style.heigth = "250vh";*/
 				form.setAttribute("action","javascript:szimulal()");
 				window.formdiv = document.createElement("div");
 				formdiv.setAttribute("id","formdiv");
@@ -581,6 +524,7 @@
 				szamit.setAttribute("form","mtrform");
 				szamit.textContent = "Szimuláció";
 				szamit.style.margin = "10px 0px 0px";
+				
 				document.getElementById("selecttext").style.display = "block";
 				document.getElementById("mySelect").style.display = "inline";
 				document.getElementById("removebtn").style.display = "inline";
@@ -661,80 +605,9 @@
                 tbl.appendChild(tblBody);
 				document.getElementById("mtrdiv").insertBefore(tbl, document.getElementById("btndiv"));
                 // put <table> in the <body>
-				/*var select = document.createElement("select");
-				select.setAttribute("id","mySelect");
-				for(i=0;i<5;i++){
-					if(i==0){
-						var option = document.createElement("option");
-						var text = " 0.00";
-						option.text = "0.00";
-						option.value = 0;
-						for(j=0;j<number-1;j++){
-							option.text = option.text + text;
-						}
-					}
-					if(i==1){
-						var option = document.createElement("option");
-						var text = " 0.25";
-						option.text = "0.25";
-						option.value = 0.25;
-						for(j=0;j<number-1;j++){
-							option.text = option.text + text;
-						}
-					}
-					if(i==2){
-						var option = document.createElement("option");
-						var text = " 0.50";
-						option.text = "0.50";
-						option.value = 0.5;
-						for(j=0;j<number-1;j++){
-							option.text = option.text + text;
-						}
-					}
-					if(i==3){
-						var option = document.createElement("option");
-						var text = " 0.75";
-						option.text = "0.75";
-						option.value = 0.75;
-						for(j=0;j<number-1;j++){
-							option.text = option.text + text;
-						}
-					}
-					if(i==4){
-						var option = document.createElement("option");
-						var text = " 1.00";
-						option.text = "1.00";
-						option.value = 1;
-						for(j=0;j<number-1;j++){
-							option.text = option.text + text;
-						}
-					}
-					select.add(option);
-				}*/
-				
-				/*var div3 = document.createElement("div");
-				div3.setAttribute("id","div3");
-				div3.style.width = "100%";*/
-				
-				//selecttext.appendChild(select);
-				//selecttext.appendChild(removebtn);
-				/*selecttext.appendChild(alapok);*/
-                /*fodiv.appendChild(tbl);
-				div3.appendChild(tbtn);
-				div3.appendChild(randombtn);
-				div3.appendChild(tomegesbtn);
-				fodiv.appendChild(div3);*/
-				/*var body1 = document.getElementById("container-login100");
-				formdiv.appendChild(form);
-				body1.appendChild(formdiv);*/
 
                 tbl.style.border = "1px solid black";
-                tbl.style.borderCollapse = "collapse";
-                /*document.getElementById("szamit").disabled = true;
-				document.getElementById("tbtn").disabled = true;
-				document.getElementById("randombtn").disabled = true;
-				document.getElementById("tomegesbtn").disabled = true;*/
-				
+                tbl.style.borderCollapse = "collapse";				
             }
             function createtimetable(lefutas){
 			var details = document.createElement("details");
@@ -838,20 +711,13 @@
 				for(var j=0;j<number;j++){
 					matrix[j] = new Array(number);
 					for (var i=0;i<number;i++){
-						/*if(i===j){
-							matrixszam = 0;
-							matrixszam = parseFloat(matrixszam);
-							matrix[j][i] = matrixszam;
-						}
-						else{*/
-							var k = j+1;
-							var l = i+1;
-							var read = document.getElementById("mtr"+k+l);
-							read.setAttribute("readonly","readonly");
-							matrixszam = document.getElementById("mtr"+k+l).value;
-							matrixszam = parseFloat(matrixszam);
-							matrix[j][i] = matrixszam;
-						/*}*/
+						var k = j+1;
+						var l = i+1;
+						var read = document.getElementById("mtr"+k+l);
+						read.setAttribute("readonly","readonly");
+						matrixszam = document.getElementById("mtr"+k+l).value;
+						matrixszam = parseFloat(matrixszam);
+						matrix[j][i] = matrixszam;
 					}
 				}						
 				window.eremat = new Array(number);
@@ -865,14 +731,6 @@
 				for(var j=0;j<number;j++){
 					window.diagram[0][j] = window.init[szamlalo-1][j];
 				}
-				/*window.fixpont = new Array(lefutas);
-				for(var j=0;j<lefutas;j++){
-					window.fixpont[j] = new Array(number);
-					/*for(var i=0;i<number;i++){
-						window.fixpont[j][i] = i;
-					}*/
-				/*}*/
-				//window.fixponttomb = [];
 				var akt = 0;
 				var summ = 0;
 				var summary = 0;
@@ -943,18 +801,11 @@
 					if(cut===number){
 						window.van = 1;
 						fixponttomb[0] = new Array(number);
-						/*for(var n=0;n<2;n++){*/
 						fixponttomb[lefutas] = new Array(number);
-						//}
 						for(var n=0;n<number;n++){
 							fixponttomb[0][n] = "C"+(n+1);
 						}
 						fixponttomb[szamlalo] = window.diagram[j-1];
-						/*for(var n=0;n<number;n++){
-							if(window.diagram[j-1][n] != fixponttomb[0][n]){
-								fixponttomb[lefutas][n] = window.diagram[j-1][n];
-							}
-						}*/
 						stabil = stabil + 1;
 						window.break = j;
 						break;
@@ -1021,7 +872,6 @@
 					delete fixponttomb[j];
 				}
 			}
-			console.log(window.fixponttomb);
 			eredmeny(lefutas);
 			szamlalo = szamlalo + 1;
 			}
@@ -1035,42 +885,34 @@
 				element.setAttribute("id","szimered");
                 element.innerHTML = "A szimulációk eredménye:";
                 element.style.margin = "20px 0px 20px";
-				//element.style.textAlign = "left";
 				diveredmeny.appendChild(element);
 				var element4 = document.createElement("p");
 				element4.setAttribute("id","pszazalekos");
                 element4.innerHTML = lefutas+"db lefutás történt, amelyek százalékos formában:";
                 element4.style.margin = "20px 0px 20px";
-                //element4.style.textAlign = "left";
                 diveredmeny.appendChild(element4);
                 var element1 = document.createElement("p");
 				element1.setAttribute("id","pstabil");
                 element1.innerHTML = ((stabil/window.index)*100)+"%-ban ("+stabil+"db)"+" stabil eredményt adtak.";
                 diveredmeny.appendChild(element1);
-                //element1.style.textAlign = "left";
                 var element2 = document.createElement("p");
 				element2.setAttribute("id","phatarciklus");
                 element2.innerHTML = ((hatarciklus/window.index)*100)+"%-ban ("+hatarciklus+"db)"+" végződött határciklusban.";
                 diveredmeny.appendChild(element2);
-                //element2.style.textAlign = "left";
                 var element3 = document.createElement("p");
 				element3.setAttribute("id","pnemstabil");
                 element3.innerHTML = ((nemstabil/window.index)*100)+"%-ban ("+nemstabil+"db)"+" kaotikusan viselkedett.";
-                diveredmeny.appendChild(element3);
-                //element3.style.textAlign = "left";               
+                diveredmeny.appendChild(element3);    
 			}
 			else{
 				var element4 = document.getElementById("pszazalekos");
 				element4.innerHTML = window.szamlalo+"db lefutás történt, amelyek százalékos formában:";
 				var element1 = document.getElementById("pstabil");
 				element1.innerHTML = ((stabil/window.index)*100)+"%-ban ("+stabil+"db)"+" stabil eredményt adtak.";
-                //element1.style.textAlign = "left";
 				var element2 = document.getElementById("phatarciklus");
 				element2.innerHTML = ((hatarciklus/window.index)*100)+"%-ban ("+hatarciklus+"db)"+" végződött határciklusban.";
-                //element2.style.textAlign = "left";
 				var element3 = document.getElementById("pnemstabil");
 				element3.innerHTML = ((nemstabil/window.index)*100)+"%-ban ("+nemstabil+"db)"+" kaotikusan viselkedett.";
-                //element3.style.textAlign = "left";
 			}
 		}
 		var number = document.getElementById("num1").value;
@@ -1088,7 +930,6 @@
 		kep.setAttribute("type","image");
 		kep.setAttribute("src","images/icons8-download-graph-report-30.png");
 		kep.setAttribute("onclick","kepletoltes3(this.id)");
-		//kep.textContent = "Képletöltés";
 		kep.style.margin = "10px 0px 0px";
 		text.appendChild(kep);
 		
@@ -1104,7 +945,6 @@
 			kep.setAttribute("type","image");
 			kep.setAttribute("src","images/icons8-download-graph-report-30.png");
 			kep.setAttribute("onclick","kepletoltes()");
-			//kep.textContent = "Képletöltés";
 			kep.style.margin = "10px 0px 0px";
 			text.appendChild(kep);
 		}
@@ -1132,16 +972,15 @@
 		kep.setAttribute("type","image");
 		kep.setAttribute("src","images/icons8-download-graph-report-30.png");
 		kep.setAttribute("onclick","kepletoltes2()");
-		//kep.textContent = "Képletöltés";
 		kep.style.margin = "10px 0px 0px";
 		text.appendChild(kep);
 		window.newChart2 = document.getElementById('newChart'+lefutas).getContext('2d');
 		
 		let myChart = document.getElementById('myChart'+lefutas).getContext('2d');
 		let newChart = document.getElementById('newChart').getContext('2d');
-		//let newChart2 = document.getElementById('newChart'+lefutas).getContext('2d');
 		var t = document.getElementById("timeinput").value;
 		t = parseFloat(t);
+		
 		// Global Options
 		const xlabels = [];
 		const ylabels = [];

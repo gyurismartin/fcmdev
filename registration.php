@@ -1,10 +1,5 @@
 <?php
 	session_start();
-	if(isset($_SESSION['hiba'])){
-		$hiba = $_SESSION['hiba'];
-		echo "<script type='text/javascript'>alert('$hiba');</script>";
-		unset($_SESSION['hiba']);
-	}
 ?>
 <!DOCTYPE html>
     
