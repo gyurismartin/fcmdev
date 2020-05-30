@@ -54,7 +54,7 @@ body {
 	height: 30px;
 }
 #funkcio-gombok header nav{
-	margin: 0px 200px 0px 200px;
+	margin: 0px 100px 0px 100px;
 	text-transform: uppercase;
 	float: left;
 	text-decoration: none;
@@ -125,12 +125,12 @@ header nav a {
     color: #FFF;
 }
 #Page {
-	background-image: url('../szakdoga/images/screen.jpg');
+	background-image: url('../images/screen.jpg');
 	top: 80px;
 	font-family: Montserrat-Medium;
 	position: relative;
 	box-sizing: border-box;
-	min-height: 857px;
+	min-height: 100vh;
 }
 #Page h1{
 	margin-top: 0px;
@@ -146,21 +146,8 @@ header nav a {
 	font-size: 16px;
 	font-weight: bold;
 }
-/*#Page div#content{
-	background-image: url('../szakdoga/images/screen.jpg');
-	width: 50%;
-	float: left;
-	display: inline;
-	height: 294px;
-	margin: 0px;
-}*/
 #Page div#image{
-	/*background-image: url('../szakdoga/images/screen.jpg');
-	width: 50%;
-	float: right;
-	display: inline;*/
 	text-align: center;
-	/*margin: 0px;*/
 }
 #Page div#function-list{
 	align-items: center;
@@ -206,7 +193,8 @@ header nav > a#logoff { width: 200px; }
 header nav > a#ujszim { width: 200px; }
 header nav > a#fajl { width: 200px; }
 header nav > a#mtr { width: 200px; }
-header nav > a#szim { width: 200px; border-right: solid 1px #FFF}
+header nav > a#szim { width: 200px; }
+header nav > a#megosztas { width: 200px; border-right: solid 1px #FFF}
 
 #irodalom a{
 	color: black;
@@ -265,7 +253,6 @@ header nav > a#szim { width: 200px; border-right: solid 1px #FFF}
   border-left: solid 1px #FFF;
   border-right: solid 1px #FFF;
   color: white;
-  /*padding: 16px;*/
   font-size: 16px;
   border: none;
   cursor: pointer;
@@ -306,9 +293,6 @@ header nav > a#szim { width: 200px; border-right: solid 1px #FFF}
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-/*.dropdown:hover .dropbtn {
-  background-color: #3e8e41;
-}*/
 @media (max-width: 992px) {
 	header{
 		margin-left: 0px;

@@ -22,35 +22,19 @@
     padding: 0px; 
     box-sizing: border-box;
 }
-/*body {
-    background-image: url('../images/screen.jpg');
-}*/
 button {
     font-family: Montserrat-SemiBold;
 }
 .container-login100 {
     width: 100%;
-    /*padding: 15px;
-    /*min-height: 200vh;*/
 	min-height: 857px;
-	background-image: url('../szakdoga/images/screen.jpg');
+	background-image: url('../images/screen.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     font-family: Montserrat-SemiBold;   
     text-align: center;
 }
-/*.login100-form-title{
-    width: 100%;
-    display: block;
-    font-family: Poppins-Regular;
-    font-size: 39px;
-    color: #333333;
-    line-height: 1.2;
-    text-align: center;
-    margin-bottom: 25px;
-    padding-left: 100px;
-}*/
 .num1{
     margin-bottom: 20px;
     margin-right: 10px;
@@ -135,15 +119,12 @@ a{
 }
 #tbtn {
 	margin: 10px 5px 0px 0px;
-	/*float: left;*/
 }
 #randombtn {
 	margin: 10px 5px 0px 0px;
-	/*float: left;*/
 }
 #tomegesbtn {
 	margin: 10px 5px 0px 0px;
-	/*float: left;*/
 }
 #myImg {
   border-radius: 5px;
